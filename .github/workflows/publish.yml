@@ -23,8 +23,7 @@ jobs:
           git config --global user.name "GitHub Actions"
 
           # Clone the HF repo
-          git clone https://user:${HF_TOKEN}@huggingface.co/mallik-amaan/edubot-backend hf_repo
-
+    git clone https://user:${HF_TOKEN}@huggingface.co/spaces/mallik-amaan/edubot-backend hf_repo
           # Sync only the backend folder into it
           rsync -av --delete --exclude='.git' backend/ hf_repo/
 
