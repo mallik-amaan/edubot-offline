@@ -1,7 +1,7 @@
 name: Sync Backend to Hugging Face Hub
 on:
   push:
-    branches: [backend]
+    branches: [main]
     paths:
       - 'backend/**'
   workflow_dispatch:
@@ -21,13 +21,8 @@ jobs:
         run: |
           git config --global user.email "ci@github.com"
           git config --global user.name "GitHub Actions"
-
-          # Clone the HF repo
-    git clone https://user:${HF_TOKEN}@huggingface.co/spaces/mallik-amaan/edubot-backend hf_repo
-          # Sync only the backend folder into it
+          git clone https://user:${HF_TOKEN}@huggingface.co/spaces/mallik-amaan/edubot-backend hf_repo
           rsync -av --delete --exclude='.git' backend/ hf_repo/
-
-          # Commit and push
           cd hf_repo
           git add -A
           git diff --cached --quiet || git commit -m "Sync backend from GitHub @ ${{ github.sha }}"
