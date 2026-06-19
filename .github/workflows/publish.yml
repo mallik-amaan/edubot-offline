@@ -20,5 +20,5 @@ jobs:
         uses: huggingface/hub-sync@v0.1.0
         with:
           github_repo_id: ${{ github.repository }}
-          huggingface_repo_id: username/space-name
+          huggingface_repo_id: mallik-amaan/edubot-offline
           hf_token: ${{ secrets.HF_TOKEN }}
